@@ -2,23 +2,80 @@
 #include "rlutil.h"
 #include <ctime>
 #include <string>
+#include <vector>
 
 using namespace std;
 
 //Structs
 struct ElementCard{
+    //Variables o Atributos
+    string elemento;
+    string color;
+    int numero;
+    
+    //Constructor
+    ElementCard() {}
+    ElementCard(string elemento, string color, int numero) {
+        this->elemento = elemento;
+        this->color = color;
+        this->numero = numero;
+    }
+};
+
+struct Jugador{
 
 };
 
 
 //Funcionalidades del programa
-bool revisarCombinacionCartas() {
+vector<ElementCard> crearCartasElemento(vector<ElementCard> mazoCartasDesafio) {
+//void crearCartasElemento(vector<ElementCard> mazoCartasDesafio) {
+    ElementCard aux;
+    for (int i = 0; i < 3; i++){ // Para tipos de elemento
+        for (int j = 0; j < 4; j++) { // Para colores
+            for (int k = 0; k < 5; k++) { // Para numeros
+                //Condiciones
+                //Elemento
+                if (i == 0) {
+                    aux.elemento = "Fuego";
+                }
+                else if (i == 1) {
+                    aux.elemento = "Nieve";
+                }
+                else if (i == 2) {
+                    aux.elemento = "Agua";
+                }
+                //Color
+                if (j == 0) {
+                    aux.color = "Rojo";
+                }
+                else if (j == 1) {
+                    aux.color = "Amarillo";
+                }
+                else if (j == 2) {
+                    aux.color = "Verde";
+                }
+                else if (j == 3) {
+                    aux.color = "Azul";
+                }
+                //Número
+                aux.numero = k + 1;
 
+                //Agregamos la carta auxiliar a la baraja
+                mazoCartasDesafio.push_back(aux);
+            }
+        }
+    }
+    return mazoCartasDesafio;
 }
 
-bool revisarObjetivo() {
-
-}
+//bool revisarCombinacionCartas() {
+//
+//}
+//
+//bool revisarObjetivo() {
+//
+//}
 
 
 int main() {
@@ -26,15 +83,27 @@ int main() {
     srand(time(0));
 
     //Variables
-    string cartasDesafio[10] = {
+    string mazoCartasDesafio[10] = { //Colección de 10 cartas desafio
     };
+    vector<ElementCard> mazoCartasElemento; //Colección de 60 cartas Elemento
+    cout << "Bienvenido" << endl;
+    /*ElementCard newElement = ElementCard("Fuego", "Rojo", 5);
+    mazoCartasElemento.push_back(newElement);*/
+
+    mazoCartasElemento = crearCartasElemento(mazoCartasElemento);
+    //Revisar las cartas
+    for (int i = 0; i < mazoCartasElemento.size(); i++){
+        cout << "Elemento: " << mazoCartasElemento[i].elemento << ", ";
+        cout << "Color: " << mazoCartasElemento[i].color << ", ";
+        cout << "Numero: " << mazoCartasElemento[i].numero << endl;
+
+    }
 
 
 
 
 
-
-    char nombre[30];
+    /*char nombre[30];
     int cartaselemento[60];
     int N, N2, N3, N4, X, Ronda = 0;
     string cartadesafio[10];
@@ -95,7 +164,7 @@ int main() {
         }
 
         cin >> N;
-    } while (N != 0);
-
+    } while (N != 0);*/
+    rlutil::getkey();
     return 0;
 }
