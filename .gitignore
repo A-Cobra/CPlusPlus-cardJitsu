@@ -1,0 +1,9 @@
+*.tmp
+/.vs/
+*.docx
+cardJitsu.sln
+/x64/
+/cardJitsu/x64/
+/cardJitsu/cardJitsu.vcxproj
+/cardJitsu/cardJitsu.vcxproj.filters
+/cardJitsu/cardJitsu.vcxproj.user
